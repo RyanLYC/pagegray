@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      /* 方案一 */
+      /* html {
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray;
+        filter: progid:dximagetransform.microsoft.basicimage(grayscale=1);
+      } */
+      /* 方案二 backdrop-filter 兼容性要求高*/
+      html {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      html::before {
+        content: "";
+        position: fixed; /** position换成absolute, 实现一个只置灰首屏的效果 */
+        backdrop-filter: grayscale(100%);
+        pointer-events: none;
+        inset: 0;
+        z-index: 100;
+      }
+      /* 方案二 局部元素恢复 不 置灰 */
+      .not-gray {
+        position: relative;
+        /*设置指定元素的z-index 超过灰色的即可*/
+        z-index: 1000;
+      }
+
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 10px;
+      }
+      .content .item {
+        width: calc(33.33% - 6.7px);
+        height: 100px;
+        background-color: pink;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .item:nth-child(3n) {
+        margin-right: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item">
+        <img src="./dev.png" width="100%" height="100%" />
+      </div>
+      <div class="item not-gray"></div>
+      <div class="item not-gray"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
