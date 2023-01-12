@@ -11,7 +11,7 @@
         padding: 0;
         margin: 0;
       }
-      /* 方案一 */
+      /* 方案一  当在 body 中使用了 filter 滤镜属性的时候，会导致 fixed 元素定位发生错误，即不再相对 viewport 进行定位，而是相对整个网页（ body 元素）进行定位，只需要将 filter 属性放在 html 标签上就好了*/
       /* html {
         -webkit-filter: grayscale(100%);
         -moz-filter: grayscale(100%);
